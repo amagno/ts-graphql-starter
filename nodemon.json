@@ -1,0 +1,11 @@
+{
+  "verbose": false,
+  "ignore": ["node_modules", "__build__"],
+  "env": {
+    "NODE_ENV": "development",
+    "PORT": 3000,
+    "MOCK": true
+  },
+  "ext": ".ts,.json,.graphql",
+  "watch": "./src"
+}

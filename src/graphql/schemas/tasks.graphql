@@ -1,0 +1,10 @@
+type Task {
+  id: ID!
+  name: String
+  checked: Boolean
+  order: Int
+}
+input TaskInput {
+  name: String!
+  checked: Boolean!
+}

@@ -1,0 +1,10 @@
+# import * from 'tasks.graphql'
+# import * from 'users.graphql'
+
+type Query {
+  users: [User]
+  tasks: [Task]
+}
+type Mutation {
+  addTask(task: TaskInput): Task
+}
