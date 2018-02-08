@@ -1,0 +1,14 @@
+# import Timestamps from 'interfaces.graphql'
+# import Task from 'task.graphql'
+
+type User implements Timestamps {
+  id: ID!
+  username: String
+  tasks: [Task]
+  createdAt: String
+  updatedAt: String
+}
+input UserInput {
+  username: String!
+  password: String!
+}

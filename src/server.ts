@@ -2,6 +2,9 @@ import * as express from 'express';
 import * as expressGraphql from 'express-graphql';
 import * as cors from 'cors';
 import { schema } from './graphql/schema';
+import { initDatabase } from './data/init';
+
+initDatabase({ force: true });
 
 const app = express();
 const port = process.env.PORT || 3000;

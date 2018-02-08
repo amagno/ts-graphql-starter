@@ -1,0 +1,16 @@
+# import Timestamps from 'interfaces.graphql'
+# import User from 'user.graphql'
+
+type Task implements Timestamps {
+  id: ID!
+  name: String
+  checked: Boolean
+  order: Int
+  user: User
+  createdAt: String
+  updatedAt: String
+}
+input TaskInput {
+  name: String!
+  checked: Boolean
+}

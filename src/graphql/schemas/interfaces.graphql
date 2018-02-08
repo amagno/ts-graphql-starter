@@ -1,0 +1,4 @@
+interface Timestamps {
+  updatedAt: String
+  createdAt: String
+}
