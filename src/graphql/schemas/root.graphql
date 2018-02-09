@@ -7,7 +7,7 @@ type Query {
   tasks: [Task]
 }
 type Mutation {
-  addUser(input: UserInput): User
+  addUser(input: UserInput): Token
   addTask(userId: ID!, input: TaskInput): Task
   login(input: UserInput): Token
 }

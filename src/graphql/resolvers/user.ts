@@ -3,16 +3,31 @@ import { UserModel } from '../../data/models/user-model';
 import { TaskModel } from '../../data/models/task-model';
 import { sign, verify } from 'jsonwebtoken';
 export const addUser: Resolver = async (_, args, context) => {
-  const { input } = args;
-  return await UserModel.create(input) as any;
+  try {
+    const { input } = args;
+    const { id } = await UserModel.create(input) as any;
+    const { ip } = context;
+    if (id && ip) {
+      return {
+        key: sign({ id, ip }, process.env.SECRET as string),
+      };
+    }
+    throw new Error('Error on create user');
+  } catch (error) {
+    throw new Error(error);
+  }
   // console.log(dataValues);
 };
 export const users: Resolver = async (_, args, context) => {
-  return await UserModel.findAll({
-    include: [
-      { model: TaskModel, as: 'tasks' },
-    ],
-  });
+  try {
+    return await UserModel.findAll({
+      include: [
+        { model: TaskModel, as: 'tasks' },
+      ],
+    });
+  } catch (error) {
+    throw new Error(error);
+  }
 };
 export const user: Resolver = async (_, args, context) => {
   try {
@@ -32,7 +47,7 @@ export const login: Resolver = async (_, args, context) => {
     const { id } = await UserModel.findOne({ attributes: input }) as any;
     const { ip } = context;
     if (id) {
-      const token = sign({ id, ip }, process.env.SECRET);
+      const token = sign({ id, ip }, process.env.SECRET as string);
       return {
         key: token,
       };
