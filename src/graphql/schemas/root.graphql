@@ -2,11 +2,12 @@
 # import * from 'user.graphql'
 
 type Query {
-  user(userId: ID!): User
+  user(id: ID!): User
   users: [User]
   tasks: [Task]
 }
 type Mutation {
   addUser(input: UserInput): User
   addTask(userId: ID!, input: TaskInput): Task
+  login(input: UserInput): Token
 }
