@@ -8,8 +8,9 @@ type User implements Timestamps {
   createdAt: String
   updatedAt: String
 }
-type Token {
+type AuthToken {
   key: String!
+  user: User
 }
 input AuthInput {
   token: String!

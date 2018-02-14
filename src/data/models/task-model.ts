@@ -10,8 +10,4 @@ export const TaskModel = database.define('task', {
     type: BOOLEAN,
     defaultValue: false,
   },
-  order: {
-    type: INTEGER,
-    allowNull: false,
-  },
 });

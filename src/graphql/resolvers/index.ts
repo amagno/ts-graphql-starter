@@ -1,21 +1,21 @@
 import { user, users, addUser, login } from './user';
-import { addTask, tasks } from './task';
+import { addTask, tasks, deleteTask, editTask, task } from './task';
+import { authCookieToken } from './middlewares';
 
 export type Resolver<T = any> = (_: any, args: any, context: any) => T;
 
-const authLogin = (resolver: Resolver): Resolver => {
-  return resolver;
-};
-
 export const resolvers = {
   Query: {
-    user,
+    user: authCookieToken(user),
     users,
-    tasks,
+    tasks: authCookieToken(tasks),
+    task: authCookieToken(task),
   },
   Mutation: {
     addUser,
-    addTask,
     login,
+    addTask: authCookieToken(addTask),
+    deleteTask: authCookieToken(deleteTask),
+    editTask: authCookieToken(editTask),
   },
 };

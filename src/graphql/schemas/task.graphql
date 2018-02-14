@@ -5,12 +5,15 @@ type Task implements Timestamps {
   id: ID!
   name: String
   checked: Boolean
-  order: Int
   user: User
   createdAt: String
   updatedAt: String
 }
 input TaskInput {
   name: String!
+  checked: Boolean
+}
+input TaskEditInput {
+  name: String
   checked: Boolean
 }
