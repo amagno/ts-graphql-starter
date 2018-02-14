@@ -9,13 +9,13 @@ type Middleware = (resolver: Resolver) => Resolver;
 //   const token = 'asdasd';
 //   const { id } = verify(token, process.env.SECRET) as any;
 // };
-export const authCookieToken = (resolver: Resolver) => async (_, args, context) => {
+export const authCookieToken = (resolver: Resolver): Resolver => async (_, args, context) => {
   const xToken = context.cookies['x-access-token'] || context.headers['x-access-token'];
   console.log(xToken);
   if (!xToken) {
     throw new Error('Not authorized!');
   }
-  const { id } = verify(xToken, process.env.SECRET) as any;
+  const { id } = verify(xToken, process.env.SECRET as any) as any;
   if (!id) {
     throw new Error('Not authorized!');
   }
