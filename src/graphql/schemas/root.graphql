@@ -1,16 +1,23 @@
 # import * from 'task.graphql'
 # import * from 'user.graphql'
+# import * from 'contact.graphql'
 
 type Query {
   user: User
   users: [User]
   tasks: [Task]
   task(id: ID!): Task
+  contacts: [Contact]
+  contact(id: ID!): Contact
+  publicContacts: [Contact]
 }
 type Mutation {
   addTask(input: TaskInput): Task
+  editTask(id: ID!, input: TaskEditInput): Task  
   deleteTask(id: ID!): Task
-  editTask(id: ID!, input: TaskEditInput): Task
   addUser(input: UserInput): AuthToken  
   login(input: UserInput): AuthToken
+  addContact(input: ContactInput): Contact
+  editContact(id: ID!, input: ContactInput): Contact
+  deleteContact(id: ID!): Contact
 }

@@ -1,0 +1,22 @@
+# import User from 'user.graphql'
+
+type Contact {
+  id: ID!
+  user: User!
+  name: String!
+  email: String!
+  isFavorite: Boolean!
+  isPublic: Boolean!
+  address: String
+  company: String
+  phone: String
+}
+input ContactInput {
+  name: String
+  email: String
+  isFavorite: Boolean
+  isPublic: Boolean  
+  address: String
+  company: String
+  phone: String
+}
