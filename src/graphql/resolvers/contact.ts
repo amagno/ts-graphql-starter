@@ -87,3 +87,20 @@ export const contact: Resolver = async (_, args, context) => {
     throw new Error(error);
   }
 };
+export const deleteContact: Resolver = async (_, args, context) => {
+  try {
+    const contactDelete = await ContactModel.findById(args.id, {
+      where: {
+        userId: context.user,
+      },
+      include: [
+        { model: UserModel, as: 'user' },
+      ],
+    }) as any;
+    contactDelete.destroy();
+    return contactDelete;
+
+  } catch (error) {
+    throw new Error(error);
+  }
+};
